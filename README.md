@@ -192,3 +192,14 @@ An FFT peak describes a periodic component of the selected energy signal. The sc
 #### Validation
 
 The current implementation was checked with synthetic OUTCAR data for energy extraction, energy-difference cancellation, FFT frequency conversion and amplitude scaling, Hann-window correction, even/odd sample counts, the Nyquist bin, incomplete tables, frame selection, independent FFT options, and output-format selection. These checks do not replace verification against the structure and sampling of your own OUTCAR.
+
+### xdatcar.py
+
+This script is for slicing XDATCAR file into 3000 frames which obtained from phonopy generated `qpoints.yaml`.
+
+Check XDATCAR slicing:
+```bash
+ls configs | head
+ls configs | tail
+find configs -maxdepth 1 -name 'POSCAR.*' | wc -l
+```
