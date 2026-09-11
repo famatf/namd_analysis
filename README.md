@@ -50,12 +50,58 @@ python plot_band_population_checked.py \
 
 Default output is PNG + JSON. Add `--pdf` and/or `--csv` if needed.
 
+### `check_hnu.py`
+
+Inspect band energies in `HAMIL.h5` and compare selected energy differences with a photon energy.
+
+The script reports mean and standard deviation for every band in `basis_list`, then evaluates the fixed pairs `316 -> 317`, `316 -> 321`, and `317 -> 321` when they are present. For `316 -> 321`, it also prints the difference between the chosen photon energy and the average band-energy difference.
+
+Set the photon energy directly in the script:
+
+```
+hnu = 1.5
+```
+
+Run with:
+
+```
+python check_hnu.py
+```
+
+The script expects `HAMIL.h5` in the current directory.
+
+### `plot_gamma_phonon_projection.py`
+
+Plot layer and polarization projections of Gamma-point phonon modes for a BP/MoS2 structure from Phonopy output.
+
+The script reads eigenvectors from `qpoints.yaml` and uses atom symbols from that file or, if necessary, from a companion `phonopy.yaml`. It calculates BP/MoS2 layer weights and Cartesian polarization weights from normalized `|e|^2`.
+
+Basic usage:
+
+```
+python plot_gamma_phonon_projection.py qpoints.yaml
+```
+
+For example, to label selected modes:
+
+```
+python plot_gamma_phonon_projection.py qpoints.yaml --label-modes 8,225,281
+```
+
+Default outputs are:
+
+```
+gamma_phonon_projection.png
+gamma_phonon_projection.pdf
+gamma_phonon_projection.csv
+```
+
 Dependencies:
 
-```text
+```
 numpy
-h5py
 matplotlib
+PyYAML
 ```
 
 ### `xdatcar.py`
@@ -82,6 +128,7 @@ Run with:
 ```bash
 python3 xdatcar.py
 ```
+
 
 ### `init.sh`
 
